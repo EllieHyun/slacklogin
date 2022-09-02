@@ -21,6 +21,10 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// slack
+	implementation("com.slack.api:slack-api-model-kotlin-extension:1.24.0")
+	implementation("com.slack.api:slack-api-client-kotlin-extension:1.24.0")
 }
 
 tasks.withType<KotlinCompile> {
