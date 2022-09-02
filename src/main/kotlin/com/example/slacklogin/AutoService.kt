@@ -39,6 +39,9 @@ class AutoService @Autowired constructor(
         val userId = oauthV2Access.authedUser.id
         val accessToken = oauthV2Access.authedUser.accessToken
 
+        println("userId = $userId")
+        println("access token = $accessToken")
+
         // 2. user info 조회
         val usersInfoRequest = UsersInfoRequest.builder()
             .token(accessToken)
@@ -50,12 +53,12 @@ class AutoService @Autowired constructor(
         println("user = ${usersInfo.user}")
 
         // 3. team info 조회
-        val teamInfoRequest = TeamInfoRequest.builder()
-            .token(accessToken)
-            .build()
-
-        val teamInfo = slackClient.teamInfo(teamInfoRequest)
-        println("team = ${teamInfo.team}")
+//        val teamInfoRequest = TeamInfoRequest.builder()
+//            .token(accessToken)
+//            .build()
+//
+//        val teamInfo = slackClient.teamInfo(teamInfoRequest)
+//        println("team = ${teamInfo.team}")
 
         // 4. user profile 조회
         val profileGetRequest = UsersProfileGetRequest.builder().token(accessToken).build()
@@ -68,10 +71,13 @@ class AutoService @Autowired constructor(
                 .token(accessToken)
                 .channel(userId)
                 .blocks(Blocks.asBlocks(
-                    Blocks.section { section -> section.text(BlockCompositions.markdownText(":yum: Hello World!! ${usersInfo.user.name}")) }
+                    Blocks.section { section -> section.text(BlockCompositions.markdownText(":yum: Hello World!!")) }
                 ))
         }
 
         println("result = ${result.message}")
+
     }
+
+
 }
